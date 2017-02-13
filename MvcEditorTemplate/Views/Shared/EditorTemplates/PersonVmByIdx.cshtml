@@ -1,0 +1,47 @@
+﻿@model MvcEditorTemplate.Models.MainVm
+
+<ul class="nav nav-tabs">
+    @{
+        for (int i = 0; i < Model.PersonsList.Count; i++)
+        {
+            <li class="@(i == 0 ? "active" : "")"><a data-toggle="tab" href="#personTab@(Model.PersonsList[i].PersonId)">Person @Model.PersonsList[i].PersonId</a></li>
+        }
+    }
+</ul>
+
+<div class="tab-content">
+    @{
+
+        for (int i = 0; i < Model.PersonsList.Count; i++)
+        {
+            <div id="personTab@(Model.PersonsList[i].PersonId)" class="tab-pane fade in @(i == 0 ? "active" : "")">
+                <h3>@Model.PersonsList[i].FirstName @Model.PersonsList[i].LastName</h3>
+                <table>
+                    <tr>
+                        <td>Id</td>
+                        <td>@Html.EditorFor(m => m.PersonsList[i].PersonId)</td>
+                    </tr>
+                    <tr>
+                        <td>First name</td>
+                        <td>@Html.EditorFor(m => m.PersonsList[i].FirstName)</td>
+                    </tr>
+                    <tr>
+                        <td>Last name</td>
+                        <td>@Html.EditorFor(m => m.PersonsList[i].LastName)</td>
+                    </tr>
+                    <tr>
+                        <td>Date of birth</td>
+                        <td>@Html.EditorFor(m => m.PersonsList[i].DateOfBirth)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button id="btnSubmit@(Model.PersonsList[i].PersonId)" type="submit" value="btnSubmitPerson@(Model.PersonsList[i].PersonId)" name="btnSubmitPerson">Submit</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    }
+</div>
+

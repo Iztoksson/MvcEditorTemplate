@@ -1,0 +1,7 @@
+﻿@model MvcEditorTemplate.Models.MainVm
+
+@using (Html.BeginForm())
+{
+    <h2>Editor template - by index</h2>
+    @Html.EditorFor(m => m, "PersonVmByIdx")
+}
